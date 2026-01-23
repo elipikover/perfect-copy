@@ -1,4 +1,5 @@
 import bioArtwork from "@/assets/bio-artwork.avif";
+import bioCharacter from "@/assets/bio-character.avif";
 
 const BiographySection = () => {
   return (
@@ -40,12 +41,18 @@ const BiographySection = () => {
             </div>
           </div>
           
-          {/* Right - Artwork */}
-          <div className="w-full md:w-1/2">
+          {/* Right - Artwork with character */}
+          <div className="w-full md:w-1/2 relative">
             <img
               src={bioArtwork}
               alt="DropJaw Jacobites - Biography Artwork"
               className="w-full h-full object-contain"
+            />
+            {/* Small character at bottom */}
+            <img
+              src={bioCharacter}
+              alt="Character illustration"
+              className="absolute bottom-0 left-0 w-32 md:w-40 -translate-x-1/4"
             />
           </div>
         </div>
