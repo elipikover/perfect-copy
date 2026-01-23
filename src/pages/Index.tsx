@@ -13,10 +13,10 @@ const Index = () => {
       <HeroSection />
       <IntroducingSection />
       <AlbumSection />
+      <FactsSection />
       <MusicSection />
       <BiographySection />
       <ContentSection />
-      <FactsSection />
       <FooterSection />
     </main>
   );

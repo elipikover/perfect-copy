@@ -1,4 +1,4 @@
-import posterImage from "@/assets/poster-image.jpg";
+import factsArtwork from "@/assets/facts-artwork.avif";
 
 const FactsSection = () => {
   return (
@@ -71,7 +71,7 @@ const FactsSection = () => {
         {/* Right side - Animated image */}
         <div className="w-full md:w-1/2 min-h-[50vh] md:min-h-screen">
           <img
-            src={posterImage}
+            src={factsArtwork}
             alt="The DropJaw Jacobites"
             className="w-full h-full object-cover"
           />
