@@ -1,6 +1,20 @@
+import { useState } from "react";
 import factsArtwork from "@/assets/facts-artwork.avif";
 
 const FactsSection = () => {
+  const [copied, setCopied] = useState(false);
+  const email = "dropjawjacobites@gmail.com";
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy email:", err);
+    }
+  };
+
   return (
     <section className="w-full bg-background min-h-screen">
       <div className="flex flex-col md:flex-row min-h-screen">
@@ -48,14 +62,19 @@ const FactsSection = () => {
                 <p className="text-foreground">Rock</p>
               </div>
 
-              <div>
+              <div className="relative">
                 <p className="text-coral text-sm">Contact:</p>
-                <a 
-                  href="mailto:dropjawjacobites@gmail.com" 
-                  className="text-coral hover:underline text-sm"
+                <button 
+                  onClick={handleCopyEmail}
+                  className="text-coral hover:underline text-sm cursor-pointer text-left"
                 >
-                  dropjawjacobites@gmail.com
-                </a>
+                  {email}
+                </button>
+                {copied && (
+                  <span className="absolute -right-2 top-0 translate-x-full text-coral text-xs whitespace-nowrap">
+                    Copied!
+                  </span>
+                )}
               </div>
             </div>
 
