@@ -1,6 +1,20 @@
-import { Instagram, Facebook, Youtube, Mail } from "lucide-react";
+import { Instagram, Facebook, Youtube } from "lucide-react";
+import { useState } from "react";
 
 const FooterSection = () => {
+  const [copied, setCopied] = useState(false);
+  const email = "dropjawjacobites@gmail.com";
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy email:", err);
+    }
+  };
+
   return (
     <footer className="w-full bg-background py-16">
       <div className="container mx-auto px-4">
@@ -11,14 +25,19 @@ const FooterSection = () => {
           </h6>
 
           {/* Email */}
-          <div className="font-typewriter text-sm tracking-typewriter text-foreground">
+          <div className="font-typewriter text-sm tracking-typewriter text-foreground relative">
             Email:{" "}
-            <a
-              href="mailto:dropjawjacobites@gmail.com"
-              className="text-foreground hover:text-primary transition-colors underline"
+            <button
+              onClick={handleCopyEmail}
+              className="text-foreground hover:text-coral transition-colors underline cursor-pointer"
             >
-              dropjawjacobites@gmail.com
-            </a>
+              {email}
+            </button>
+            {copied && (
+              <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-coral text-xs whitespace-nowrap">
+                Copied to clipboard!
+              </span>
+            )}
           </div>
 
           {/* Social Icons */}
@@ -27,25 +46,25 @@ const FooterSection = () => {
               href="https://www.instagram.com/dropjaw_jacobites/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center bg-muted rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
+              className="w-10 h-10 flex items-center justify-center bg-muted rounded-full hover:bg-coral hover:text-background transition-colors"
               aria-label="Instagram"
             >
               <Instagram className="w-5 h-5" />
             </a>
             <a
-              href="https://www.facebook.com/people/The-DropJaw-Jacobites/100082993111725/"
+              href="https://www.facebook.com/DropjawJacobites/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center bg-muted rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
+              className="w-10 h-10 flex items-center justify-center bg-muted rounded-full hover:bg-coral hover:text-background transition-colors"
               aria-label="Facebook"
             >
               <Facebook className="w-5 h-5" />
             </a>
             <a
-              href="https://www.youtube.com/@dropjawjacobites4306"
+              href="https://www.youtube.com/@dropjawjacobitesofficial"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center bg-muted rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
+              className="w-10 h-10 flex items-center justify-center bg-muted rounded-full hover:bg-coral hover:text-background transition-colors"
               aria-label="YouTube"
             >
               <Youtube className="w-5 h-5" />
